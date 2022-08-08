@@ -4,10 +4,10 @@
 
 module "gcp_project" {
   source  = "terraform-google-modules/project-factory/google"
-  version = "~> 13.0"
+  version = "~> 13.1"
 
   name              = var.project_name
-  org_id            = local.org_id
+  org_id            = local.org_ids["formlabs_com"]
   folder_id         = var.folder_id
   random_project_id = true
 
