@@ -4,6 +4,6 @@ locals {
   }
 
   common_labels = {
-    Provisiner = "Terraform"
+    provisiner = "terraform"
   }
 }

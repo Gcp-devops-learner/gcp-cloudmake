@@ -6,9 +6,10 @@ module "gcp_project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 13.0"
 
-  name      = var.project_name
-  org_id    = local.org_id
-  folder_id = var.folder_id
+  name              = var.project_name
+  org_id            = local.org_id
+  folder_id         = var.folder_id
+  random_project_id = true
 
   activate_apis           = var.activate_apis
   activate_api_identities = var.activate_api_identities

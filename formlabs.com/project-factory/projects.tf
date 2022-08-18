@@ -5,8 +5,8 @@ module "terraform_project" {
   folder_id    = local.folder_ids["devops_prod"]
 
   labels = {
-    Environment = "Prod"
-    Owner       = "DevOps"
-    Project     = "Terraform"
+    environment = "prod"
+    owner       = "devops"
+    project     = "terraform"
   }
 }
