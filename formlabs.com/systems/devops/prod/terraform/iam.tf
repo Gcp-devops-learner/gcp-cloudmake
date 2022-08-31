@@ -8,7 +8,7 @@ resource "google_service_account_key" "atlantis" {
 }
 
 resource "google_organization_iam_member" "atlantis" {
-  org_id  = local.org_ids["formlabs_com"]
-  role    = "roles/owner"
-  member  = "serviceAccount:${google_service_account.atlantis.email}"
+  org_id = local.org_ids["formlabs_com"]
+  role   = "roles/owner"
+  member = "serviceAccount:${google_service_account.atlantis.email}"
 }
