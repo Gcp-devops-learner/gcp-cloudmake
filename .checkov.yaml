@@ -1,5 +1,4 @@
-download-external-modules: false
+download-external-modules: true
 evaluate-variables: true
 framework:
 - terraform
-
