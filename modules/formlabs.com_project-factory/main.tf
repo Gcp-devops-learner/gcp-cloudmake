@@ -15,7 +15,7 @@ module "gcp_project" {
   folder_id         = var.folder_id
   random_project_id = true
 
-  activate_apis           = var.activate_apis
+  activate_apis           = concat(var.activate_apis, local.default_apis)
   activate_api_identities = var.activate_api_identities
 
   billing_account = var.billing_account != "" ? var.billing_account : local.billing_account_ids["formlabs_sada"]
