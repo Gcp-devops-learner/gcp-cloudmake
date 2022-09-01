@@ -1,8 +1,8 @@
 resource "google_storage_bucket" "terrafrom_state" {
   #checkov:skip=CKV_GCP_62: Access log not needed
-  name          = "formlabs-terraform-gcp-state"
-  location      = "us-east1"
-  force_destroy = true
+  name                        = "formlabs-terraform-gcp-state"
+  location                    = "us-east1"
+  force_destroy               = true
   uniform_bucket_level_access = true
 
   encryption {
