@@ -13,3 +13,10 @@ resource "google_organization_iam_member" "atlantis" {
   role   = "roles/owner"
   member = "serviceAccount:${google_service_account.atlantis.email}"
 }
+
+resource "google_organization_iam_member" "atlantis_iam" {
+  #checkov:skip=CKV_GCP_45: Skip it because atlantis is needed manage iams
+  org_id = local.org_ids["formlabs_com"]
+  role   = "roles/resourcemanager.organizationAdmin"
+  member = "serviceAccount:${google_service_account.atlantis.email}"
+}

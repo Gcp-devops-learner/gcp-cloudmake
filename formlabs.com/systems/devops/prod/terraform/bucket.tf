@@ -1,9 +1,9 @@
 resource "google_storage_bucket" "terrafrom_state" {
-  #checkov:skip=CKV_GCP_62: Access log not needed
-  name                        = "formlabs-terraform-gcp-state"
-  location                    = "us-east1"
-  force_destroy               = true
-  uniform_bucket_level_access = true
+  #checkov:skip=CKV_GCP_62:Access log not needed
+  #checkov:skip=CKV_GCP_29:Uniform bucket-level access are not needed
+  name          = "formlabs-terraform-gcp-state"
+  location      = "us-east1"
+  force_destroy = true
 
   encryption {
     default_kms_key_name = google_kms_crypto_key.terrafrom_state.id
