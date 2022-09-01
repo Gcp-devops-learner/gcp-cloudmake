@@ -21,4 +21,3 @@ module "gcp_project" {
     var.labels
   )
 }
-

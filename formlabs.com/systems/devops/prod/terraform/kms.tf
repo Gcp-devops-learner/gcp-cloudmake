@@ -4,11 +4,12 @@ resource "google_kms_key_ring" "devops" {
 }
 
 resource "google_kms_crypto_key" "terrafrom_state" {
+  #checkov:skip=CKV_GCP_43: Skip key rotating
   name     = "terraform-state"
   key_ring = google_kms_key_ring.devops.id
 
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true
   }
 }
 
