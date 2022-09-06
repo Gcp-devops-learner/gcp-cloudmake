@@ -1,5 +1,5 @@
 resource "google_kms_key_ring" "devops" {
-  name     = "keyrig-devops"
+  name     = "keyring-devops"
   location = "us-east1"
 }
 

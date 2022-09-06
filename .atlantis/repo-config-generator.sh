@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Generate git repo level config file for atlantis
+# This script is used by atlantis pre workflow hook
+# Find all Terrafrom project under this repo and
+# generate projects configuration with workspaces
+
 BASE_DIR=$(git rev-parse --show-toplevel)
 ATLANTIS_CONFIG="${BASE_DIR}/atlantis.yaml"
 
