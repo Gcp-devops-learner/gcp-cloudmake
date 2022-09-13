@@ -1,8 +1,8 @@
 module "terraform_project" {
-  #checkov:skip=CKV_GCP_49:3rd party module
-  #checkov:skip=CKV_GCP_62:3rd party module
-  #checkov:skip=CKV_GCP_78:3rd party module
-  #checkov:skip=CKV2_GCP_5:3rd party module
+  #checkov:skip=CKV_GCP_49
+  #checkov:skip=CKV_GCP_62
+  #checkov:skip=CKV_GCP_78
+  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "terraform"
@@ -15,11 +15,32 @@ module "terraform_project" {
   }
 }
 
+module "k8s_test_project" {
+  #checkov:skip=CKV_GCP_49
+  #checkov:skip=CKV_GCP_62
+  #checkov:skip=CKV_GCP_78
+  #checkov:skip=CKV2_GCP_5
+  source = "../../modules/formlabs.com/project-factory"
+
+  project_name = "k8s-test"
+  folder_id    = local.folder_ids["devops_dev"]
+
+  activate_apis = [
+    "container.googleapis.com"
+  ]
+
+  labels = {
+    environment = "dev"
+    owner       = "devops"
+    project     = "k8s-test"
+  }
+}
+
 module "prod_network_project" {
-  #checkov:skip=CKV_GCP_49:3rd party module
-  #checkov:skip=CKV_GCP_62:3rd party module
-  #checkov:skip=CKV_GCP_78:3rd party module
-  #checkov:skip=CKV2_GCP_5:3rd party module
+  #checkov:skip=CKV_GCP_49
+  #checkov:skip=CKV_GCP_62
+  #checkov:skip=CKV_GCP_78
+  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "prod-network"
@@ -33,10 +54,10 @@ module "prod_network_project" {
 }
 
 module "dev_network_project" {
-  #checkov:skip=CKV_GCP_49:3rd party module
-  #checkov:skip=CKV_GCP_62:3rd party module
-  #checkov:skip=CKV_GCP_78:3rd party module
-  #checkov:skip=CKV2_GCP_5:3rd party module
+  #checkov:skip=CKV_GCP_49
+  #checkov:skip=CKV_GCP_62
+  #checkov:skip=CKV_GCP_78
+  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "dev-network"
