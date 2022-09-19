@@ -1,5 +1,7 @@
 module "dev_network" {
   source = "../../../../../modules/vpc-factory"
+  #checkov:skip=CKV_GCP_74
+  #checkov:skip=CKV_GCP_76
 
   project_id   = local.project_id
   network_name = "dev-network"

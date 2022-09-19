@@ -6,6 +6,8 @@
 module "vpc" {
   source  = "terraform-google-modules/network/google"
   version = "~> 5.2"
+  #checkov:skip=CKV_GCP_74
+  #checkov:skip=CKV_GCP_76
 
   project_id                             = var.project_id
   network_name                           = var.network_name
