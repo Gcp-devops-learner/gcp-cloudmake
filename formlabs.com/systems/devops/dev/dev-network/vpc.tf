@@ -8,7 +8,7 @@ module "dev_network" {
   subnets = [
     {
       subnet_name   = "dev-shared-network"
-      subnet_ip     = "10.235.0.0/23"
+      subnet_ip     = "10.235.0.0/22"
       subnet_region = "us-east1"
     },
   ]
