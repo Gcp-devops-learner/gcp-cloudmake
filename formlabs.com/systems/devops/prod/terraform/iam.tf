@@ -7,16 +7,23 @@ resource "google_service_account_key" "atlantis" {
   service_account_id = google_service_account.atlantis.name
 }
 
-resource "google_organization_iam_member" "atlantis" {
+resource "google_organization_iam_member" "atlantis_owner" {
   #checkov:skip=CKV_GCP_45: Skip it because atlantis is needed to be create new projects
   org_id = local.org_ids["formlabs_com"]
   role   = "roles/owner"
   member = "serviceAccount:${google_service_account.atlantis.email}"
 }
 
-resource "google_organization_iam_member" "atlantis_iam" {
+resource "google_organization_iam_member" "atlantis_org" {
   #checkov:skip=CKV_GCP_45: Skip it because atlantis is needed manage iams
   org_id = local.org_ids["formlabs_com"]
   role   = "roles/resourcemanager.organizationAdmin"
+  member = "serviceAccount:${google_service_account.atlantis.email}"
+}
+
+resource "google_organization_iam_member" "atlantis_project" {
+  #checkov:skip=CKV_GCP_45: Skip it because atlantis is needed create project
+  org_id = local.org_ids["formlabs_com"]
+  role   = "roles/resourcemanager.projectCreator"
   member = "serviceAccount:${google_service_account.atlantis.email}"
 }
