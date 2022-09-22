@@ -71,7 +71,10 @@ pipeline {
                         script {
                             changedFolders.each {
                                 sh "checkov --config-file .checkov.yaml --soft-fail --quiet -o junitxml --output-file-path . --directory ${it}"
-                                junit 'results_junitxml.xml'
+                                junit (
+                                    testResults: 'results_junitxml.xml',
+                                    allowEmptyResults : true
+                                )
                             }
                         }
                     }
