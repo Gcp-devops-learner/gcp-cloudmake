@@ -17,6 +17,8 @@ module "gke" {
   filestore_csi_driver       = true
   kubernetes_version         = var.kubernetes_version
   release_channel            = "UNSPECIFIED"
+  enable_pod_security_policy = true
+  enable_private_endpoint    = true
   logging_service            = "logging.googleapis.com/kubernetes"
   monitoring_service         = "monitoring.googleapis.com/kubernetes"
   remove_default_node_pool   = true
