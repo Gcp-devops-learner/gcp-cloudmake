@@ -11,7 +11,7 @@ module "vpc" {
   ]
 
   secondary_ranges = {
-    (local.netork_names["subnet"]) = [
+    (local.network_names["subnet"]) = [
       {
         range_name    = local.network_names["pods"]
         ip_cidr_range = var.pods_range
