@@ -23,7 +23,7 @@ variable "cluster_zones" {
 variable "machine_types" {
   type        = list(string)
   description = "The list of machine types"
-  default     = ["e2-standard-8"]
+  default     = ["e2-standard-4"]
 }
 
 variable "cluster_min_node" {
@@ -57,13 +57,13 @@ variable "subnet" {
 
 variable "pods_range" {
   type        = string
-  description = "Secondary range will be used in pod netoworking"
+  description = "Secondary range will be used in pod networking"
   default     = "172.16.0.0/20"
 }
 
 variable "services_range" {
   type        = string
-  description = "Secondary range will be used in service netoworking"
+  description = "Secondary range will be used in service networking"
   default     = "172.16.128.0/20"
 }
 
