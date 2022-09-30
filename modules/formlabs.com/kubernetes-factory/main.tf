@@ -7,9 +7,9 @@ module "gke" {
   region                     = var.cluster_region
   zones                      = var.cluster_zones
   network                    = module.vpc.gcp_vpc_id
-  subnetwork                 = local.netork_names["subnet"]
-  ip_range_pods              = local.netork_names["pods"]
-  ip_range_services          = local.netork_names["services"]
+  subnetwork                 = local.network_names["subnet"]
+  ip_range_pods              = local.network_names["pods"]
+  ip_range_services          = local.network_names["services"]
   http_load_balancing        = true
   network_policy             = true
   network_policy_provider    = "CALICO"
@@ -20,6 +20,7 @@ module "gke" {
   logging_service            = "logging.googleapis.com/kubernetes"
   monitoring_service         = "monitoring.googleapis.com/kubernetes"
   remove_default_node_pool   = true
+
 
   node_pools = local.node_pools
 
