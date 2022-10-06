@@ -10,6 +10,7 @@ module "vpc" {
   project_id                             = var.project_id
   network_name                           = var.network_name
   subnets                                = var.subnets
+  secondary_ranges                       = var.secondary_ranges
   firewall_rules                         = var.firewall_rules
   shared_vpc_host                        = var.shared_vpc_host
   routing_mode                           = "REGIONAL"

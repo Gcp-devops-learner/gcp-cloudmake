@@ -9,7 +9,7 @@ locals {
     for type in var.machine_types : {
       name                   = "${var.cluster_name}-${type}-node-pool"
       machine_type           = type
-      node_locations         = join("'", var.cluster_zones)
+      node_locations         = join(",", var.cluster_zones)
       min_count              = var.cluster_min_node
       max_count              = var.cluster_max_node
       spot                   = false
@@ -30,5 +30,4 @@ locals {
     local.common_labels,
     var.labels
   )
-
 }

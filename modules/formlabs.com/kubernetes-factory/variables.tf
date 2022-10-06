@@ -17,7 +17,7 @@ variable "cluster_region" {
 variable "cluster_zones" {
   type        = list(string)
   description = "The zones to host the cluster in"
-  default     = ["us-east1-a", "us-east1-b"]
+  default     = ["us-east1-b", "us-east1-c"]
 }
 
 variable "machine_types" {

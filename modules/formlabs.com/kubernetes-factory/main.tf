@@ -6,7 +6,7 @@ module "gke" {
   name                       = var.cluster_name
   region                     = var.cluster_region
   zones                      = var.cluster_zones
-  network                    = module.vpc.gcp_vpc_id
+  network                    = module.vpc.gcp_vpc_name
   subnetwork                 = local.network_names["subnet"]
   ip_range_pods              = local.network_names["pods"]
   ip_range_services          = local.network_names["services"]
@@ -20,16 +20,14 @@ module "gke" {
   logging_service            = "logging.googleapis.com/kubernetes"
   monitoring_service         = "monitoring.googleapis.com/kubernetes"
   remove_default_node_pool   = true
-
-
-  node_pools = local.node_pools
-
+  node_pools                 = local.node_pools
   node_pools_oauth_scopes = {
     all = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
   }
-
   cluster_resource_labels = local.labels
+
+  depends_on = [module.vpc.gcp_vpc_subnets]
 }

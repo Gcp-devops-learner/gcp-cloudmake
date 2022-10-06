@@ -1,5 +1,5 @@
-output "gcp_vpc_id" {
-  value       = module.vpc.network_id
+output "gcp_vpc_name" {
+  value       = module.vpc.network_name
   description = "The name of the GCP project."
 }
 
