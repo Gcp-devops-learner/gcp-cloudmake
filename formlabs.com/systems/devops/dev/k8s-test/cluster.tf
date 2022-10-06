@@ -1,5 +1,3 @@
-data "google_client_config" "default" {}
-
 module "cluster" {
   source = "../../../../../modules/formlabs.com/kubernetes-factory"
   #checkov:skip=CKV_GCP_24
