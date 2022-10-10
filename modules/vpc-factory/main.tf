@@ -6,12 +6,11 @@
 module "vpc" {
   source  = "terraform-google-modules/network/google"
   version = "~> 5.2"
-  #checkov:skip=CKV_GCP_74
-  #checkov:skip=CKV_GCP_76
 
   project_id                             = var.project_id
   network_name                           = var.network_name
   subnets                                = var.subnets
+  secondary_ranges                       = var.secondary_ranges
   firewall_rules                         = var.firewall_rules
   shared_vpc_host                        = var.shared_vpc_host
   routing_mode                           = "REGIONAL"

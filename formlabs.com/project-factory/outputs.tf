@@ -9,3 +9,7 @@ output "prod_network_project" {
 output "dev_network_project" {
   value = module.dev_network_project
 }
+
+output "k8s_test_project" {
+  value = module.k8s_test_project
+}
