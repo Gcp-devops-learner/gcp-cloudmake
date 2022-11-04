@@ -13,3 +13,11 @@ output "dev_network_project" {
 output "k8s_test_project" {
   value = module.k8s_test_project
 }
+
+output "prod_vpn_project" {
+  value = module.prod_vpn_project
+}
+
+output "dev_vpn_project" {
+  value = module.dev_vpn_project
+}
