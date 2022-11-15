@@ -37,6 +37,7 @@ provider "google" {
 ```
 
 ### Create versions.tf file with the latest versions
+# If you add a change in this project please make sure that you are using the latest versions
 ```
 terraform {
   required_version = "1.3.4"
@@ -63,8 +64,7 @@ terraform {
 ### View your changes
 `terraform plan`
 
-### After everything is good, apply your changes
-`terraform apply`
+### After everything is good, create a Pull-Request for it
 
 ## How to import existing resource:
 
