@@ -1,3 +1,13 @@
+resource "null_resource" "ram" {
+  provisioner "local-exec" {
+    command = "aws ram enable-sharing-with-aws-organization"
+  }
+
+  triggers = {
+    account_id = local.aws_account_id
+  }
+}
+
 module "vpn_aws_tgw_dev_us_east_1" {
   source  = "terraform-aws-modules/transit-gateway/aws"
   version = "~> 2.8.1"

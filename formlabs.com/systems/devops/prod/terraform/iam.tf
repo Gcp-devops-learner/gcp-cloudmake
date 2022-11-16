@@ -34,3 +34,10 @@ resource "google_organization_iam_member" "atlantis_xpn" {
   role   = "roles/compute.xpnAdmin"
   member = "serviceAccount:${google_service_account.atlantis.email}"
 }
+
+resource "google_organization_iam_member" "atlantis_network" {
+  #checkov:skip=CKV_GCP_45: Skip it because atlantis is needed manage shared vpcs
+  org_id = local.org_ids["formlabs_com"]
+  role   = "roles/compute.networkAdmin"
+  member = "serviceAccount:${google_service_account.atlantis.email}"
+}
