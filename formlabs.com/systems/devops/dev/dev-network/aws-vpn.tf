@@ -38,7 +38,7 @@ module "vpn_us_east_1" {
   version = "~>1.0.1"
 
   transit_gateway_id = module.vpn_aws_tgw_dev_us_east_1.ec2_transit_gateway_id
-  google_network     = data.google_compute_network.dev_network.id
+  google_network     = module.dev_network.gcp_vpc_network_id
   amazon_side_asn    = local.aws_asn
   google_side_asn    = local.gcp_asn
 }
