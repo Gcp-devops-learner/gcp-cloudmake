@@ -136,7 +136,7 @@ module "packer_windows_machine_test_project" {
   #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
-  project_name = "packer-windows-machine-test"
+  project_name = "packer-windows-test"
   folder_id    = local.folder_ids["devops_dev"]
 
   labels = {
