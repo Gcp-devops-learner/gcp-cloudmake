@@ -139,7 +139,7 @@ module "packer_windows_machine_test_project" {
   project_name = "packer-windows-test"
   folder_id    = local.folder_ids["devops_dev"]
 
-   activate_apis = [
+  activate_apis = [
     "sourcerepo.googleapis.com",
     "compute.googleapis.com",
     "servicemanagement.googleapis.com",
