@@ -143,7 +143,8 @@ module "packer_windows_machine_test_project" {
     "sourcerepo.googleapis.com",
     "compute.googleapis.com",
     "servicemanagement.googleapis.com",
-    "storage-api.googleapis.com"
+    "storage-api.googleapis.com",
+    "cloudbuild.googleapis.com"
   ]
 
   labels = {
