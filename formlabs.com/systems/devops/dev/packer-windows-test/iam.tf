@@ -37,6 +37,9 @@ resource "google_project_iam_custom_role" "cloud_builder" {
 
     # Required to be able to generate logs 
     "logging.logEntries.create",
+
+    # Required to impersonate service account
+    "iam.serviceAccounts.actAs"
   ]
 }
 
