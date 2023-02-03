@@ -12,5 +12,18 @@ module "terraform_project" {
       subnet_private_access = "true"
     }
   ]
-
+  firewall_rules = [
+    {
+      name                    = "allow-winrm"
+      direction               = "INGRESS"
+      source_service_accounts = [google_service_account.cloud_build_service_account.email]
+      allow = [
+        {
+          protocol = "tcp"
+          ports    = ["5986"]
+        }
+      ]
+    }
+  ]
 }
+
