@@ -129,14 +129,14 @@ module "dev_cloudlogging_system_test_project" {
   }
 }
 
-module "packer_windows_machine_test_project" {
+module "jenkins_packer_project" {
   # checkov:skip=CKV_GCP_49
   # checkov:skip=CKV_GCP_62
   # checkov:skip=CKV_GCP_78
   # checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
-  project_name = "packer-windows-test"
+  project_name = "jenkins-packer"
   folder_id    = local.folder_ids["devops_dev"]
 
   activate_apis = [
@@ -144,7 +144,8 @@ module "packer_windows_machine_test_project" {
     "compute.googleapis.com",
     "servicemanagement.googleapis.com",
     "storage-api.googleapis.com",
-    "cloudbuild.googleapis.com"
+    "cloudbuild.googleapis.com",
+    "servicenetworking.googleapis.com",
   ]
 
   labels = {
