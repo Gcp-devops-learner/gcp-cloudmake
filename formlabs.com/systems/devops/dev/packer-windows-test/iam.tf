@@ -35,11 +35,18 @@ resource "google_project_iam_custom_role" "cloud_builder" {
     "cloudbuild.builds.list",
     "cloudbuild.builds.get",
 
+    # Required to create image and set image labels
+    "compute.images.create",
+    "compute.images.setLabels",
+
     # Required to be able to generate logs 
     "logging.logEntries.create",
 
     # Required to impersonate service account
-    "iam.serviceAccounts.actAs"
+    "iam.serviceAccounts.actAs",
+
+    # Required to use worker pool
+    "cloudbuild.workerpools.use",
   ]
 }
 

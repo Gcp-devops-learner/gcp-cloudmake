@@ -1,6 +1,6 @@
 locals {
-  project_id = "packer-windows-test-e0b0"
-
+  project_id = "jenkins-packer-66e3"
+  region     = "us-east1"
   labels = merge(
     local.common_labels,
     {
