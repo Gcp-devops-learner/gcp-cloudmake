@@ -1,7 +1,3 @@
-/*
- * # GCP Project Factory for Formlabs.com acccount
- */
-
 module "gcp_project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 13.1"
@@ -14,7 +10,7 @@ module "gcp_project" {
   activate_apis           = concat(var.activate_apis, local.default_apis)
   activate_api_identities = var.activate_api_identities
 
-  billing_account = var.billing_account != "" ? var.billing_account : local.billing_account_ids["formlabs_sada"]
+  billing_account = var.billing_account != "" ? var.billing_account : local.billing_account_ids["formlabs_master"]
 
   labels = merge(
     local.common_labels,

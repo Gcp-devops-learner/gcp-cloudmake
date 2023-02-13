@@ -1,14 +1,11 @@
-/*
- * # GCP VPC Factory 
- * # Create VPC with given networks with access to the Internet 
- */
-
 module "vpc" {
   source  = "terraform-google-modules/network/google"
   version = "~> 6.0"
 
   project_id                             = var.project_id
   network_name                           = var.network_name
+  description                            = var.description
+  mtu                                    = var.mtu
   subnets                                = var.subnets
   secondary_ranges                       = var.secondary_ranges
   firewall_rules                         = var.firewall_rules
@@ -16,13 +13,5 @@ module "vpc" {
   routing_mode                           = "REGIONAL"
   auto_create_subnetworks                = false
   delete_default_internet_gateway_routes = true
-
-  routes = [
-    {
-      name              = "egress-internet"
-      description       = "Route through IGW to access internet"
-      destination_range = "0.0.0.0/0"
-      next_hop_internet = "true"
-    }
-  ]
+  routes                                 = local.routes
 }

@@ -2,6 +2,6 @@
   dir: ${PROJECT}
   workspace: ${WORKSPACE}
   autoplan:
-    when_modified: [\"*.tf*\"]
+    when_modified: [\"${MODULES}\", \"*.tf*\"]
     enabled: true
   workflow: formlabs-gcp

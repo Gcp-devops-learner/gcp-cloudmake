@@ -24,6 +24,7 @@ function get_workspaces () {
 function render_project () {
     local PROJECT=${1}
     local WORKSPACE=${2}
+    local MODULES=${3}
 
     eval "echo \"$(cat ${BASE_DIR}/.atlantis/project.tmpl)\"" >> ${ATLANTIS_CONFIG}
 }
@@ -32,9 +33,12 @@ cp ${BASE_DIR}/.atlantis/atlantis.yaml ${ATLANTIS_CONFIG}
 
 for dir in $(find ${BASE_DIR} -type d ! -path ${BASE_DIR} ! -path "*/.git*" ! -path "*/.atlantis*" ! -path "*/.terraform*"); do
     if [[ -f "${dir}/backend.tf" ]]; then
-        PROJECT=${dir#$(git rev-parse --show-toplevel)"/"}
+	GIT_ROOT=$(git rev-parse --show-toplevel)
+        PROJECT=${dir#${GIT_ROOT}"/"}
+        RELATIVE_ROOT=$(python3 -c "import os.path; print(os.path.relpath(\"${GIT_ROOT}\", \"${dir}\"))")
+        MODULES="${RELATIVE_ROOT}/modules/**/*.tf"
         for WORKSPACE in $(get_workspaces ${dir}); do
-            render_project ${PROJECT} ${WORKSPACE}
+            render_project "$PROJECT" "$WORKSPACE" "$MODULES"
         done
     fi
 done
