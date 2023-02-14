@@ -20,10 +20,6 @@ module "terraform_project" {
 }
 
 module "k8s_test_project" {
-  #checkov:skip=CKV_GCP_49
-  #checkov:skip=CKV_GCP_62
-  #checkov:skip=CKV_GCP_78
-  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "k8s-test"
@@ -41,10 +37,6 @@ module "k8s_test_project" {
 }
 
 module "prod_network_project" {
-  #checkov:skip=CKV_GCP_49
-  #checkov:skip=CKV_GCP_62
-  #checkov:skip=CKV_GCP_78
-  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "prod-network"
@@ -58,10 +50,6 @@ module "prod_network_project" {
 }
 
 module "dev_network_project" {
-  #checkov:skip=CKV_GCP_49
-  #checkov:skip=CKV_GCP_62
-  #checkov:skip=CKV_GCP_78
-  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "dev-network"
@@ -75,10 +63,6 @@ module "dev_network_project" {
 }
 
 module "prod_vpn_project" {
-  #checkov:skip=CKV_GCP_49
-  #checkov:skip=CKV_GCP_62
-  #checkov:skip=CKV_GCP_78
-  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "prod-aws-vpn"
@@ -92,10 +76,6 @@ module "prod_vpn_project" {
 }
 
 module "dev_vpn_project" {
-  #checkov:skip=CKV_GCP_49
-  #checkov:skip=CKV_GCP_62
-  #checkov:skip=CKV_GCP_78
-  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "dev-aws-vpn"
@@ -109,10 +89,6 @@ module "dev_vpn_project" {
 }
 
 module "dev_cloudlogging_system_test_project" {
-  #checkov:skip=CKV_GCP_49
-  #checkov:skip=CKV_GCP_62
-  #checkov:skip=CKV_GCP_78
-  #checkov:skip=CKV2_GCP_5
   source = "../../modules/formlabs.com/project-factory"
 
   project_name = "k8s-test"

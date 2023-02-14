@@ -1,6 +1,6 @@
-def terrafromImageVersion = '1.2.8'
-def tflintImageVersion = 'v0.39.3.2'
-def checkovImageVersion = '2.1.165'
+def terrafromImageVersion = '1.3.8'
+def tflintImageVersion = 'v0.45.0.0'
+def checkovImageVersion = '2.3.3'
 
 def changedFiles = []
 def changedFolders = []

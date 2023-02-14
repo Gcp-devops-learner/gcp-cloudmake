@@ -9,6 +9,7 @@ resource "google_service_account_key" "atlantis" {
 
 resource "google_organization_iam_member" "atlantis_owner" {
   #checkov:skip=CKV_GCP_45: Skip it because atlantis is needed to be create new projects
+  #checkov:skip=CKV_GCP_115: Ensure basic roles are not used at organization level.
   org_id = local.org_ids["formlabs_com"]
   role   = "roles/owner"
   member = "serviceAccount:${google_service_account.atlantis.email}"

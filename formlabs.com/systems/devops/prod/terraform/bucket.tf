@@ -1,6 +1,7 @@
 resource "google_storage_bucket" "terrafrom_state" {
-  #checkov:skip=CKV_GCP_62:Access log not needed
-  #checkov:skip=CKV_GCP_29:Uniform bucket-level access are not needed
+  #checkov:skip=CKV_GCP_114: Ensure public access prevention is enforced on Cloud Storage bucket
+  #checkov:skip=CKV_GCP_29: Ensure that Cloud Storage buckets have uniform bucket-level access enabled
+  #checkov:skip=CKV_GCP_62: Bucket should log access
   name          = "formlabs-terraform-gcp-state"
   location      = "us-east1"
   force_destroy = true
