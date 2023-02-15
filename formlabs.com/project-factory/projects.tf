@@ -130,3 +130,20 @@ module "jenkins_packer_project" {
     project     = "jenkins"
   }
 }
+
+module "dev_formlabs_cloud_sandbox_project" {
+  #checkov:skip=CKV_GCP_49
+  #checkov:skip=CKV_GCP_62
+  #checkov:skip=CKV_GCP_78
+  #checkov:skip=CKV2_GCP_5
+  source = "../../modules/formlabs.com/project-factory"
+
+  project_name = "formlabs-cloud-sandbox"
+  folder_id    = local.folder_ids["software_dev"]
+
+  labels = {
+    environment = "dev"
+    owner       = "engineering"
+    project     = "formlabs-cloud-sandbox"
+  }
+}
