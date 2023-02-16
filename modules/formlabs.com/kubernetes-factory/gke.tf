@@ -1,6 +1,14 @@
+data "google_client_config" "default" {}
+
+provider "kubernetes" {
+  host                   = "https://${module.gke.endpoint}"
+  token                  = data.google_client_config.default.access_token
+  cluster_ca_certificate = base64decode(module.gke.ca_certificate)
+}
+
 module "gke" {
-  source  = "terraform-google-modules/kubernetes-engine/google"
-  version = "23.0.0"
+  source  = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
+  version = "25.0.0"
 
   project_id                 = var.project_id
   name                       = var.cluster_name
@@ -10,9 +18,9 @@ module "gke" {
   subnetwork                 = local.network_names["subnet"]
   ip_range_pods              = local.network_names["pods"]
   ip_range_services          = local.network_names["services"]
-  http_load_balancing        = true
-  network_policy             = true
-  network_policy_provider    = "CALICO"
+  master_authorized_networks = var.master_authorized_networks
+  http_load_balancing        = false
+  network_policy             = false
   horizontal_pod_autoscaling = true
   filestore_csi_driver       = true
   kubernetes_version         = var.kubernetes_version

@@ -72,3 +72,9 @@ variable "labels" {
   description = "The list of labels that assign with the project"
   default     = {}
 }
+
+variable "master_authorized_networks" {
+  type        = list(object({ cidr_block = string, display_name = string }))
+  description = "List of master authorized networks"
+  default     = []
+}
