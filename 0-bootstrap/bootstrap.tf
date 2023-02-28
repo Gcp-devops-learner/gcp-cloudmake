@@ -2,13 +2,13 @@ module "bootstrap" {
   source  = "terraform-google-modules/bootstrap/google"
   version = "~> 6.4"
 
-  org_id               = local.org_ids["formlabs_com"]
-  billing_account      = local.billing_account_ids["formlabs_master"]
-  group_org_admins     = "gcp-billing-admins@formlabs.com"
-  group_billing_admins = "gcp-billing-admins@formlabs.com"
-  default_region       = "us-east1"
+  org_id               = local.org_id
+  billing_account      = local.billing_account
+  group_org_admins     = local.group_org_admins
+  group_billing_admins = local.group_billing_admins
+  default_region       = local.default_region
   parent_folder        = local.common_folder_id
-  project_prefix       = "bootstrap"
+  project_prefix       = local.project_prefix
 
   activate_apis = [
     "serviceusage.googleapis.com",
