@@ -26,14 +26,15 @@ module "terraform_project" {
       ]
     },
     {
-      name        = "allow-jenkins"
+      # Allow RDP from WARP
+      name        = "allow-jenkins-rdp"
       direction   = "INGRESS"
-      ranges      = ["10.0.0.0/8"]
+      ranges      = ["54.157.209.135/32"]
       target_tags = ["jenkins-agent"]
       allow = [
         {
           protocol = "tcp"
-          ports    = ["445"]
+          ports    = ["3389"]
         }
       ]
     },
@@ -63,6 +64,7 @@ module "terraform_project" {
     }
   ]
 }
+
 resource "google_compute_global_address" "private_ip_alloc" {
   name          = "private-ip-alloc"
   purpose       = "VPC_PEERING"

@@ -50,17 +50,34 @@ resource "google_project_iam_custom_role" "cloud_builder" {
   ]
 }
 
+resource "google_project_iam_custom_role" "jenkins" {
+  role_id     = "jenkinsCasc"
+  title       = "Jenkins"
+  description = "A custom role made for Jenkins which grants an account access to provision compute nodes"
+  permissions = [
+    "iam.serviceAccounts.actAs",
+  ]
+}
+
 resource "google_service_account" "cloud_build_service_account" {
   account_id   = "cloud-build"
   display_name = "Cloud build service account"
   description  = "Custom cloud build service account"
 }
 
+resource "google_project_iam_binding" "jenkins" {
+  role    = google_project_iam_custom_role.jenkins.name
+  project = local.project_id
+  members = [
+    google_service_account.jenkins_service_account.member,
+  ]
+}
+
 resource "google_project_iam_binding" "cloud_build_builder" {
   role    = google_project_iam_custom_role.cloud_builder.name
   project = local.project_id
   members = [
-    google_service_account.cloud_build_service_account.member
+    google_service_account.cloud_build_service_account.member,
   ]
 }
 
@@ -68,11 +85,23 @@ resource "google_project_iam_binding" "cloud_build_instance_admin" {
   role    = "roles/compute.instanceAdmin"
   project = local.project_id
   members = [
-    google_service_account.cloud_build_service_account.member
+    google_service_account.cloud_build_service_account.member,
+    google_service_account.jenkins_service_account.member,
   ]
 }
 
 resource "google_service_account_key" "cloud_build_service_account_key" {
   service_account_id = google_service_account.cloud_build_service_account.name
   public_key_type    = "TYPE_X509_PEM_FILE"
+}
+
+resource "google_service_account_key" "jenkins_service_account_key" {
+  service_account_id = google_service_account.jenkins_service_account.name
+  public_key_type    = "TYPE_X509_PEM_FILE"
+}
+
+resource "google_service_account" "jenkins_service_account" {
+  account_id   = "jenkins"
+  display_name = "Jenkins service account"
+  description  = "Custom Jenkins service account"
 }
