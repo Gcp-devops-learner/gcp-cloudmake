@@ -147,3 +147,20 @@ module "dev_formlabs_cloud_sandbox_project" {
     project     = "formlabs-cloud-sandbox"
   }
 }
+
+module "formlabs_repo_dev_project" {
+  source = "../../modules/formlabs.com/project-factory"
+
+  project_name = "formlabs-repo-dev"
+  folder_id    = local.folder_ids["devops_dev"]
+
+  activate_apis = [
+    "artifactregistry.googleapis.com"
+  ]
+
+  labels = {
+    environment = "dev"
+    owner       = "devops"
+    project     = "formlabs-repo-dev"
+  }
+}
