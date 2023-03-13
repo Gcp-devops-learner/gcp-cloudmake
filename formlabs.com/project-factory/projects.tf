@@ -164,3 +164,25 @@ module "formlabs_repo_dev_project" {
     project     = "formlabs-repo-dev"
   }
 }
+
+module "embedded_build_machines_dev_project" {
+  source = "../../modules/formlabs.com/project-factory"
+
+  project_name = "embedded-build-machines"
+  folder_id    = local.folder_ids["software_dev"]
+
+  activate_apis = [
+    "sourcerepo.googleapis.com",
+    "compute.googleapis.com",
+    "servicemanagement.googleapis.com",
+    "storage-api.googleapis.com",
+    "cloudbuild.googleapis.com",
+    "servicenetworking.googleapis.com",
+  ]
+
+  labels = {
+    environment = "dev"
+    owner       = "engineering"
+    project     = "embedded-build-machines"
+  }
+}
