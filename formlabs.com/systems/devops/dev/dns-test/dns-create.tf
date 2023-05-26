@@ -1,4 +1,4 @@
-module "google_dns_managed_zone" {
+module "dns-private-zone" {
   source       ="../../../../../modules/formlabs.com/dns-factory/"
   project_id   = local.project_id
   region       = local.region

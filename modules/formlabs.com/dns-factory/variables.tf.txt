@@ -9,22 +9,22 @@ variable "name" {
   description = "Name of your DNS zone."
 }
 
-variable "fqdn" {
-  type        = string
-  description = "The Full Qualified Domain Name of your DNS zone. If not provided implies that the zone already exist."
+# variable "fqdn" {
+#   type        = string
+#   description = "The Full Qualified Domain Name of your DNS zone. If not provided implies that the zone already exist."
 
-  validation {
-    condition     = can(regex("^([a-zA-Z0-9. _-])+\\.+$", var.fqdn)) || var.fqdn == ""
-    error_message = "Error: your FQDN input is invalid. Please check you didn't forget the final '.' at the end."
-  }
+#   validation {
+#     condition     = can(regex("^([a-zA-Z0-9. _-])+\\.+$", var.fqdn)) || var.fqdn == ""
+#     error_message = "Error: your FQDN input is invalid. Please check you didn't forget the final '.' at the end."
+#   }
 
-  default = ""
-}
+#   default = ""
+# }
 
-variable "public" {
+variable "private" {
   type        = bool
   description = "Visibility of your zone."
-  default     = false
+  default     = true
 }
 
 variable "region" {
@@ -32,7 +32,7 @@ variable "region" {
   description = "Name of your region"
 }
 
-variable "records" {
+variable "recordsets" {
   type = map(object({
     name    = string
     type    = string
